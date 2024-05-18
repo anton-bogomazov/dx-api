@@ -16,6 +16,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.5")
     implementation("org.springframework.boot:spring-boot-starter-jdbc:3.2.5")
     implementation("org.postgresql:postgresql:42.7.3")
+    implementation("io.arrow-kt:arrow-core:1.2.4")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.5")
     testImplementation("org.springframework.boot:spring-boot-testcontainers:3.2.5")
