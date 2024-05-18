@@ -20,6 +20,7 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.5")
     testImplementation("org.springframework.boot:spring-boot-testcontainers:3.2.5")
+    testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.0")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.0")
     testImplementation("org.testcontainers:postgresql:1.19.8")
