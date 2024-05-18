@@ -7,12 +7,12 @@ import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
-class CreateNewUserUseCaseTest : StringSpec({
+class CreateNewUserTest : StringSpec({
 
     "user is persisted after creation" {
         val storage = UserInMemoryStorage.empty()
         val userExists = UserAlreadyExistsInvariant(storage)
-        val sut = CreateNewUserUseCase(userExists, storage)
+        val sut = CreateNewUser(userExists, storage)
 
         val id = sut.execute(name = name()).shouldBeRight()
 

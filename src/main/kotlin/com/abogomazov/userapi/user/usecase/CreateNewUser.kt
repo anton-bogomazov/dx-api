@@ -3,7 +3,7 @@ package com.abogomazov.userapi.user.usecase
 import arrow.core.Either
 import com.abogomazov.userapi.user.domain.*
 
-class CreateNewUserUseCase(
+class CreateNewUser(
     private val userAlreadyExists: UserAlreadyExist,
     private val persister: UserPersister,
 ) {
