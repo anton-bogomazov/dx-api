@@ -9,11 +9,21 @@ import com.abogomazov.userapi.user.usecase.UserPersister
 import io.kotest.assertions.arrow.core.shouldBeRight
 
 // MOTHERS
-fun name() =
+fun name(
+    firstName: String = "Joel",
+    lastName: String = "White",
+) =
     UserName(
-        firstName = "Joel",
-        lastName = "White",
+        firstName = firstName,
+        lastName = lastName,
     ).shouldBeRight()
+
+fun user(
+    name: UserName = name(),
+) =
+    User(
+        name = name,
+    )
 
 // DUMMIES
 val userExists = object : UserAlreadyExist {
