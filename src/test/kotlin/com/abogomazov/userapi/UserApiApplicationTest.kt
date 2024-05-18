@@ -1,4 +1,4 @@
-package com.abogomazov
+package com.abogomazov.userapi
 
 import io.kotest.core.spec.style.StringSpec
 
