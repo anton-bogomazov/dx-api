@@ -26,6 +26,8 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.0")
     testImplementation("org.testcontainers:postgresql:1.19.8")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.3")
+    testImplementation("com.tngtech.archunit:archunit:1.3.0")
+
 }
 
 tasks.test {
