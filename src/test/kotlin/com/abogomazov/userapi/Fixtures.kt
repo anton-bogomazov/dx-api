@@ -48,6 +48,10 @@ class UserInMemoryStorage(
     override fun getByName(name: UserName): User? =
         storage.find { it.name == name }
 
+    override fun getAllUsers(): List<User> {
+        return storage
+    }
+
     fun getById(id: UserId): User? =
         storage.find { it.id == id }
 

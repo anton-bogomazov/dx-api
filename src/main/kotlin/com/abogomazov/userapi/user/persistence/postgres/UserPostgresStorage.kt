@@ -19,7 +19,13 @@ class UserPostgresStorage(
         }
     }
 
+    override fun getAllUsers(): List<User> {
+        return repository.findAll().map { it.toUser() }
+    }
+
     override fun save(user: User) {
         repository.save(UserEntity.from(user))
     }
+
+
 }
