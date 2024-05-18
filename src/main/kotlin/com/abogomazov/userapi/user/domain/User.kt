@@ -5,7 +5,7 @@ import arrow.core.raise.either
 import arrow.core.raise.ensure
 import com.abogomazov.userapi.DomainError
 
-class User private constructor(
+class User(
     val id: UserId = UserId.next(),
     val name: UserName,
 ) {
