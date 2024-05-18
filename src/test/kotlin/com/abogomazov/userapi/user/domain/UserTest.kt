@@ -1,11 +1,24 @@
 package com.abogomazov.userapi.user.domain
 
 import com.abogomazov.userapi.name
+import com.abogomazov.userapi.userExists
+import com.abogomazov.userapi.userNotExists
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.matchers.shouldNotBe
 
 class UserTest : StringSpec({
-    "user is created with randomly generated uuid as id" {
-        User(name = name()).id shouldNotBe null
+    "user is created when its name is unique" {
+        User.createNewUser(
+            name = name(),
+            userAlreadyExists = userNotExists,
+        ).shouldBeRight()
+    }
+
+    "cannot create user with non-unique name" {
+        User.createNewUser(
+            name = name(),
+            userAlreadyExists = userExists,
+        ).shouldBeLeft(AlreadyExistsWithTheSameName)
     }
 })
