@@ -27,6 +27,9 @@ dependencies {
     testImplementation("org.testcontainers:postgresql:1.19.8")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.3")
     testImplementation("com.tngtech.archunit:archunit:1.3.0")
+    testImplementation("com.ninja-squad:springmockk:4.0.2")
+    testImplementation("io.mockk:mockk:1.13.11")
+
 
 }
 

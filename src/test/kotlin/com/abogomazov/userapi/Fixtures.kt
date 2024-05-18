@@ -7,6 +7,8 @@ import com.abogomazov.userapi.user.domain.UserName
 import com.abogomazov.userapi.user.usecase.UserExtractor
 import com.abogomazov.userapi.user.usecase.UserPersister
 import io.kotest.assertions.arrow.core.shouldBeRight
+import org.springframework.test.web.servlet.MvcResult
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper
 
 // MOTHERS
 fun name(
@@ -59,3 +61,7 @@ class UserInMemoryStorage(
         storage.addLast(user)
     }
 }
+
+// REST utils
+inline fun <reified T> MvcResult.toType() =
+    ObjectMapper().readValue(this.response.contentAsString, T::class.java)
