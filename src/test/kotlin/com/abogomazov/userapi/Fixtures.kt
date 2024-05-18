@@ -1,10 +1,10 @@
 package com.abogomazov.userapi
 
-import com.abogomazov.userapi.user.domain.Name
+import com.abogomazov.userapi.user.domain.UserName
 import io.kotest.assertions.arrow.core.shouldBeRight
 
 fun name() =
-    Name(
+    UserName(
         firstName = "Joel",
         lastName = "White",
     ).shouldBeRight()

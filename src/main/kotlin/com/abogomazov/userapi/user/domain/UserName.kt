@@ -6,7 +6,7 @@ import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.zipOrAccumulate
 
-data class Name private constructor(
+data class UserName private constructor(
     val firstName: FirstName,
     val lastName: LastName,
 ) {
@@ -14,14 +14,14 @@ data class Name private constructor(
         operator fun invoke(
             firstName: String,
             lastName: String,
-        ): Either<NonEmptyList<NameValidationError>, Name> = either {
+        ): Either<NonEmptyList<NameValidationError>, UserName> = either {
             zipOrAccumulate(
                 { ensure(firstName.isNotEmpty()) { NameValidationError.FirstNameIsBlank } },
                 { ensure(lastName.isNotEmpty()) { NameValidationError.LastNameIsBlank } },
                 { ensure(firstName.all { it.isLetter() }) { NameValidationError.FirstNameContainsNonLiterals } },
                 { ensure(lastName.all { it.isLetter() }) { NameValidationError.LastNameContainsNonLiterals } },
             ) { _, _, _, _ ->
-                Name(FirstName(firstName), LastName(lastName))
+                UserName(FirstName(firstName), LastName(lastName))
             }
         }
     }
