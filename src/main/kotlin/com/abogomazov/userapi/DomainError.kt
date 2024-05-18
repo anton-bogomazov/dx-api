@@ -1,5 +1,5 @@
 package com.abogomazov.userapi
 
-sealed interface DomainError
+interface DomainError
 
-sealed interface ValidationError : DomainError
+interface ValidationError : DomainError

@@ -5,6 +5,7 @@ import arrow.core.NonEmptyList
 import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.zipOrAccumulate
+import com.abogomazov.userapi.ValidationError
 
 data class UserName private constructor(
     val firstName: FirstName,
@@ -34,7 +35,7 @@ data class UserName private constructor(
 @JvmInline value class LastName(val value: String)
 @JvmInline value class FullName(val value: String)
 
-sealed interface NameValidationError {
+sealed interface NameValidationError : ValidationError {
     data object FirstNameIsBlank : NameValidationError
     data object FirstNameContainsNonLiterals : NameValidationError
     data object LastNameIsBlank : NameValidationError
