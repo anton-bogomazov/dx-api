@@ -1,8 +1,6 @@
 package com.abogomazov.userapi.user.domain
 
-import java.util.UUID
-
-data class User(
-    val id: UUID = UUID.randomUUID(),
+class User private constructor(
+    val id: UserId = UserId.next(),
     val name: UserName,
 )
