@@ -1,13 +1,26 @@
 plugins {
+    application
     kotlin("jvm") version "1.9.23"
     id("org.jetbrains.kotlin.plugin.spring") version "1.9.24"
+    id("com.google.cloud.tools.jib") version "3.4.2"
 }
 
 group = "com.abogomazov"
 version = "1.0-SNAPSHOT"
+val mainClass by extra("com.abogomazov.userapi.MainKt")
 
 repositories {
     mavenCentral()
+}
+
+jib {
+    container {
+        ports = listOf("8080")
+        mainClass = mainClass
+    }
+    to {
+        image = "abogomazov/cd-user-api"
+    }
 }
 
 // TODO autoupdate deps
