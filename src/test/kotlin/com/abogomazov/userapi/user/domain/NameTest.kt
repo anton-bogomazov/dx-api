@@ -11,25 +11,25 @@ class NameTest : StringSpec({
 
     "cannot create name from blank first/last name" {
         UserName(firstName = "", lastName = "White")
-            .shouldBeLeft(NameValidationError.FirstNameIsBlank.nel())
+            .shouldBeLeft(NameCreationError.FirstNameIsBlank.nel())
     }
 
     "cannot create name from first/last name with spaces" {
         UserName(firstName = "Walter White", lastName = "White")
-            .shouldBeLeft(NameValidationError.FirstNameContainsNonLiterals.nel())
+            .shouldBeLeft(NameCreationError.FirstNameContainsNonLiterals.nel())
     }
 
     "cannot create name from first/last name with digits" {
         UserName(firstName = "Walter", lastName = "Wh1te")
-            .shouldBeLeft(NameValidationError.LastNameContainsNonLiterals.nel())
+            .shouldBeLeft(NameCreationError.LastNameContainsNonLiterals.nel())
     }
 
     "validation errors is accumulated" {
         UserName(firstName = "", lastName = "Wh1te")
             .shouldBeLeft(
                 listOf(
-                    NameValidationError.FirstNameIsBlank,
-                    NameValidationError.LastNameContainsNonLiterals,
+                    NameCreationError.FirstNameIsBlank,
+                    NameCreationError.LastNameContainsNonLiterals,
                 ).toNonEmptyListOrNull()
             )
     }

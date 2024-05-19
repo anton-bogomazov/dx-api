@@ -5,7 +5,6 @@ import arrow.core.NonEmptyList
 import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.zipOrAccumulate
-import com.abogomazov.userapi.ValidationError
 
 data class UserName private constructor(
     val firstName: FirstName,
@@ -15,12 +14,12 @@ data class UserName private constructor(
         operator fun invoke(
             firstName: String,
             lastName: String,
-        ): Either<NonEmptyList<NameValidationError>, UserName> = either {
+        ): Either<NonEmptyList<NameCreationError>, UserName> = either {
             zipOrAccumulate(
-                { ensure(firstName.isNotEmpty()) { NameValidationError.FirstNameIsBlank } },
-                { ensure(lastName.isNotEmpty()) { NameValidationError.LastNameIsBlank } },
-                { ensure(firstName.all { it.isLetter() }) { NameValidationError.FirstNameContainsNonLiterals } },
-                { ensure(lastName.all { it.isLetter() }) { NameValidationError.LastNameContainsNonLiterals } },
+                { ensure(firstName.isNotEmpty()) { NameCreationError.FirstNameIsBlank } },
+                { ensure(lastName.isNotEmpty()) { NameCreationError.LastNameIsBlank } },
+                { ensure(firstName.all { it.isLetter() }) { NameCreationError.FirstNameContainsNonLiterals } },
+                { ensure(lastName.all { it.isLetter() }) { NameCreationError.LastNameContainsNonLiterals } },
             ) { _, _, _, _ ->
                 UserName(FirstName(firstName), LastName(lastName))
             }
@@ -35,9 +34,9 @@ data class UserName private constructor(
 @JvmInline value class LastName(val value: String)
 @JvmInline value class FullName(val value: String)
 
-sealed interface NameValidationError : ValidationError {
-    data object FirstNameIsBlank : NameValidationError
-    data object FirstNameContainsNonLiterals : NameValidationError
-    data object LastNameIsBlank : NameValidationError
-    data object LastNameContainsNonLiterals : NameValidationError
+sealed interface NameCreationError {
+    data object FirstNameIsBlank : NameCreationError
+    data object FirstNameContainsNonLiterals : NameCreationError
+    data object LastNameIsBlank : NameCreationError
+    data object LastNameContainsNonLiterals : NameCreationError
 }
