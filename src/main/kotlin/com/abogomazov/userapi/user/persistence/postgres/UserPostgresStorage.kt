@@ -26,6 +26,4 @@ class UserPostgresStorage(
     override fun save(user: User) {
         repository.save(UserEntity.from(user))
     }
-
-
 }

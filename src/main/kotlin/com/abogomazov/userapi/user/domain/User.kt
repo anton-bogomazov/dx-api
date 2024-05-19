@@ -3,7 +3,7 @@ package com.abogomazov.userapi.user.domain
 import arrow.core.Either
 import arrow.core.raise.either
 import arrow.core.raise.ensure
-import com.abogomazov.userapi.DomainError
+import com.abogomazov.userapi.common.DomainError
 
 class User(
     val id: UserId = UserId.next(),
