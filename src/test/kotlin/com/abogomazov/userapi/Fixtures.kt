@@ -65,3 +65,5 @@ class UserInMemoryStorage(
 // REST utils
 inline fun <reified T> MvcResult.toType() =
     ObjectMapper().readValue(this.response.contentAsString, T::class.java)
+inline fun <reified T> T.toJsonString() =
+    ObjectMapper().writeValueAsString(this)
