@@ -28,6 +28,7 @@ dependencies {
     // REST
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.5")
     implementation("org.springframework.hateoas:spring-hateoas:2.3.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.1")
 
     // PERSISTENCE
     runtimeOnly("org.postgresql:postgresql:42.7.3")
