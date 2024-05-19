@@ -9,7 +9,7 @@ class CreateNewUser(
 ) {
     fun execute(
         name: UserName,
-    ): Either<AlreadyExistsWithTheSameName, UserId> =
+    ): Either<UserCreationError.AlreadyExistsWithTheSameName, UserId> =
         User.createNewUser(
             name = name,
             userAlreadyExists = userAlreadyExists,

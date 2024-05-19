@@ -19,6 +19,6 @@ class UserTest : StringSpec({
         User.createNewUser(
             name = name(),
             userAlreadyExists = userExists,
-        ).shouldBeLeft(AlreadyExistsWithTheSameName)
+        ).shouldBeLeft(UserCreationError.AlreadyExistsWithTheSameName)
     }
 })

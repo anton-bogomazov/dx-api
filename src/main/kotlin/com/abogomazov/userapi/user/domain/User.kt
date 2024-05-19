@@ -13,15 +13,17 @@ class User(
         fun createNewUser(
             name: UserName,
             userAlreadyExists: UserAlreadyExist,
-        ): Either<AlreadyExistsWithTheSameName, User> = either {
-            ensure(!userAlreadyExists(name)) { AlreadyExistsWithTheSameName }
+        ): Either<UserCreationError.AlreadyExistsWithTheSameName, User> = either {
+            ensure(!userAlreadyExists(name)) { UserCreationError.AlreadyExistsWithTheSameName }
 
             User(name = name)
         }
     }
 }
 
-data object AlreadyExistsWithTheSameName : DomainError
+sealed interface UserCreationError : DomainError {
+    data object AlreadyExistsWithTheSameName : UserCreationError
+}
 
 interface UserAlreadyExist {
     operator fun invoke(name: UserName): Boolean
