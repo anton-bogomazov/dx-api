@@ -10,4 +10,6 @@ rootDir="$currentDir/../../"
 
 portainerPort=$(cd "$rootDir" && cat ./tools/docker/env/local.env | grep "PORTAINER_PORT" | cut -d'=' -f2)
 
+printf 'Local stack ENVs\n'
+(cd "$rootDir" && exec cat ./tools/docker/env/local.env)
 printf "\nPortainer GUI is available at http://localhost:$portainerPort/#/dashboard\n"

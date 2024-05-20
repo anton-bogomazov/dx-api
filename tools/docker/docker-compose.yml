@@ -4,26 +4,26 @@ services:
     restart: always
     image: postgres
     environment:
-      - POSTGRES_USER=abogomazov
-      - POSTGRES_PASSWORD=pass
-      - POSTGRES_DB=user-api
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+      - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - postgres:/data/postgres
     ports:
-      - ${POSTGRES_PORT}:5432
+      - ${POSTGRES_PORT}:${POSTGRES_INTERNAL_PORT}
 
   pgadmin:
     restart: always
     image: dpage/pgadmin4:8.6
     environment:
-      - PGADMIN_DEFAULT_EMAIL=abogomazov.dev@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=pass
+      - PGADMIN_DEFAULT_EMAIL=${PG_ADMIN_USER}
+      - PGADMIN_DEFAULT_PASSWORD=${PG_ADMIN_PASS}
     depends_on:
       - postgres
     entrypoint:
       - "/bin/sh"
       - "-c"
-      - "/bin/echo '*:5432:user-api:abogomazov:pass' > /tmp/pgpassfile && chmod 600 /tmp/pgpassfile && /entrypoint.sh"
+      - "/bin/echo '*:${POSTGRES_INTERNAL_PORT}:${POSTGRES_DB}:${POSTGRES_USER}:${POSTGRES_PASS}' > /tmp/pgpassfile && chmod 600 /tmp/pgpassfile && /entrypoint.sh"
     volumes:
       - pgadmin:/var/lib/pgadmin
       - ./servers.json:/pgadmin4/servers.json
@@ -49,6 +49,11 @@ services:
       - ${USER_API_PORT}:${USER_API_PORT}
     environment:
       - SERVER_PORT=${USER_API_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASS=${POSTGRES_PASS}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_INTERNAL_PORT}
+      - POSTGRES_HOST=${POSTGRES_HOST}
     depends_on:
       - rabbitmq
 
