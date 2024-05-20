@@ -19,7 +19,7 @@ jib {
         mainClass = mainClass
     }
     to {
-        image = "abogomazov/cd-user-api"
+        image = "abogomazov/user-api"
     }
 }
 
