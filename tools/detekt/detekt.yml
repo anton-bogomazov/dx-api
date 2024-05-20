@@ -1,0 +1,22 @@
+style:
+  NewLineAtEndOfFile:
+    active: false
+  ExplicitItLambdaParameter:
+    active: false
+  UnusedImports:
+    active: true
+
+complexity:
+  LongParameterList:
+    functionThreshold: 12
+    constructorThreshold: 12
+    ignoreDefaultParameters: true
+
+naming:
+  VariableNaming:
+    active: false
+
+
+performance:
+  SpreadOperator:
+    active: false

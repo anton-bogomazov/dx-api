@@ -2,7 +2,10 @@ package com.abogomazov.userapi.user.rest
 
 import arrow.core.Either
 import arrow.core.NonEmptyList
-import com.abogomazov.userapi.user.domain.*
+import com.abogomazov.userapi.user.domain.NameCreationError
+import com.abogomazov.userapi.user.domain.UserCreationError
+import com.abogomazov.userapi.user.domain.UserId
+import com.abogomazov.userapi.user.domain.UserName
 import com.abogomazov.userapi.user.usecase.CreateNewUser
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -31,8 +34,7 @@ class CreateUserEndpoint(
 }
 
 fun UserId.uriLocation() =
-    URI("$USERS_RESOURCE/${value}")
-
+    URI("$USERS_RESOURCE/$value")
 
 fun UserCreationError.toRestError() =
     when (this) {

@@ -6,7 +6,6 @@ import com.abogomazov.userapi.user
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldHaveSize
-import org.junit.jupiter.api.Assertions.*
 
 class GetAllUsersTest : StringSpec({
     "return empty list from empty storage" {

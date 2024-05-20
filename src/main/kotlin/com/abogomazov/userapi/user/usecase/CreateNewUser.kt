@@ -1,7 +1,11 @@
 package com.abogomazov.userapi.user.usecase
 
 import arrow.core.Either
-import com.abogomazov.userapi.user.domain.*
+import com.abogomazov.userapi.user.domain.User
+import com.abogomazov.userapi.user.domain.UserAlreadyExist
+import com.abogomazov.userapi.user.domain.UserCreationError
+import com.abogomazov.userapi.user.domain.UserId
+import com.abogomazov.userapi.user.domain.UserName
 
 class CreateNewUser(
     private val userAlreadyExists: UserAlreadyExist,

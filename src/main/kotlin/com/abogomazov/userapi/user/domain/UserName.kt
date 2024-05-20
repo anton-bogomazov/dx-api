@@ -31,7 +31,9 @@ data class UserName private constructor(
 }
 
 @JvmInline value class FirstName(val value: String)
+
 @JvmInline value class LastName(val value: String)
+
 @JvmInline value class FullName(val value: String)
 
 sealed interface NameCreationError {

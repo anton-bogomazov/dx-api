@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 plugins {
     application
     kotlin("jvm") version "1.9.23"
@@ -54,6 +56,18 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-testcontainers:$springVer")
     testImplementation("org.testcontainers:postgresql:1.19.8")
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    allRules = false
+    config.setFrom("$projectDir/tools/detekt/detekt.yml")
+}
+
+tasks.withType<Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+    }
 }
 
 tasks.test {
