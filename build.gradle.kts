@@ -8,6 +8,7 @@ plugins {
     id("com.google.cloud.tools.jib") version "3.4.2"
     id("io.gitlab.arturbosch.detekt") version "1.23.6"
     id("com.github.ben-manes.versions") version "0.51.0"
+    id("java-test-fixtures")
 }
 
 group = "com.abogomazov"
@@ -45,6 +46,10 @@ dependencies {
     testImplementation("com.tngtech.archunit:archunit:1.3.0")
     testImplementation("io.mockk:mockk:1.13.11")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
+
+    testImplementation(testFixtures(rootProject))
+    testFixturesImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
+    testFixturesImplementation("org.springframework.boot:spring-boot-starter-test:$springVer")
 
     // REST
     implementation("org.springframework.boot:spring-boot-starter-web:$springVer")
