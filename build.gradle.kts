@@ -3,7 +3,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
     application
-    kotlin("jvm") version "1.9.23"
+    kotlin("jvm") version "1.9.24"
     id("org.jetbrains.kotlin.plugin.spring") version "1.9.24"
     id("com.google.cloud.tools.jib") version "3.4.2"
     id("io.gitlab.arturbosch.detekt") version "1.23.6"
