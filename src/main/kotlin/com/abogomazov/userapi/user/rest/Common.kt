@@ -12,18 +12,22 @@ typealias Message = String
 
 data class ValidationError(val message: Message)
 
-private val baseUrl = ServletUriComponentsBuilder
-    .fromCurrentContextPath()
-    .build().toUriString()
+private val baseUrl =
+    ServletUriComponentsBuilder
+        .fromCurrentContextPath()
+        .build().toUriString()
 
-fun restBusinessError(title: String, code: String): ResponseEntity<Problem> =
+fun restBusinessError(
+    title: String,
+    code: String,
+): ResponseEntity<Problem> =
     ResponseEntity
         .unprocessableEntity()
         .contentType(MediaType.APPLICATION_PROBLEM_JSON)
         .body(
             Problem.create().withStatus(HttpStatus.UNPROCESSABLE_ENTITY)
                 .withType(URI("$baseUrl/$code"))
-                .withTitle(title)
+                .withTitle(title),
         )
 
 fun resourceNotFound(): ResponseEntity<Problem> =
@@ -33,7 +37,7 @@ fun resourceNotFound(): ResponseEntity<Problem> =
         .body(
             Problem.create().withStatus(HttpStatus.NOT_FOUND)
                 .withType(URI("$baseUrl/resource_not_found"))
-                .withTitle("Resource not found")
+                .withTitle("Resource not found"),
         )
 
 fun NonEmptyList<ValidationError>.toInvalidParamsBadRequest(): ResponseEntity<Problem> =
@@ -44,7 +48,7 @@ fun NonEmptyList<ValidationError>.toInvalidParamsBadRequest(): ResponseEntity<Pr
             Problem.create(mapOf("invalid_params" to this))
                 .withStatus(HttpStatus.BAD_REQUEST)
                 .withType(URI("$baseUrl/bad_request"))
-                .withTitle("Bad request")
+                .withTitle("Bad request"),
         )
 
 fun created(location: URI) = ResponseEntity.created(location).build<Any>()

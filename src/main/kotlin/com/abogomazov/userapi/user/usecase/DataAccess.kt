@@ -9,5 +9,6 @@ interface UserPersister {
 
 interface UserExtractor {
     fun getByName(name: UserName): User?
+
     fun getAllUsers(): List<User>
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController
 class GetAllUsersEndpoint(
     private val usecase: GetAllUsers,
 ) {
-
     @GetMapping
     fun handle(): List<UserDto> =
         usecase.execute()

@@ -6,9 +6,9 @@ import com.abogomazov.userapi.user.domain.User
 import com.abogomazov.userapi.user.domain.UserId
 import com.abogomazov.userapi.user.domain.UserName
 import org.springframework.data.annotation.Id
-import org.springframework.data.annotation.Version as DataVersion
 import org.springframework.data.relational.core.mapping.Table
-import java.util.*
+import java.util.UUID
+import org.springframework.data.annotation.Version as DataVersion
 
 @Table(name = "users")
 class UserEntity private constructor(
@@ -31,9 +31,10 @@ class UserEntity private constructor(
         User(
             id = UserId(id),
             version = Version.from(version),
-            name = UserName(firstName, lastName)
-                .getOrElse { err ->
-                    error("Invalid db state: UserName is incorrect [$err] for User #$id")
-                }
+            name =
+                UserName(firstName, lastName)
+                    .getOrElse { err ->
+                        error("Invalid db state: UserName is incorrect [$err] for User #$id")
+                    },
         )
 }

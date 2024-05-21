@@ -11,8 +11,7 @@ import org.testcontainers.utility.DockerImageName
 class TestContainerConfiguration {
     @Bean
     @ServiceConnection
-    fun postgresContainer(): PostgreSQLContainer<*> =
-        PostgreSQLContainer(DockerImageName.parse("postgres"))
+    fun postgresContainer(): PostgreSQLContainer<*> = PostgreSQLContainer(DockerImageName.parse("postgres"))
 }
 
 fun main() {

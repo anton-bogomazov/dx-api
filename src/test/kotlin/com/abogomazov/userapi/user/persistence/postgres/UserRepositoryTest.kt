@@ -17,28 +17,28 @@ class UserRepositoryTest(
     private val sut: UserRepository,
     private val jdbcTemplate: JdbcTemplate,
 ) : StringSpec({
-    extensions(PostgresCleaner(jdbcTemplate))
+        extensions(PostgresCleaner(jdbcTemplate))
 
-    val user = user(name(firstName = "Joel", lastName = "White"))
+        val user = user(name(firstName = "Joel", lastName = "White"))
 
-    "return single user when full name matches" {
-        sut.save(UserEntity.from(user))
+        "return single user when full name matches" {
+            sut.save(UserEntity.from(user))
 
-        sut.findByFullName("Joel White")
-            .shouldHaveSize(1)
-    }
+            sut.findByFullName("Joel White")
+                .shouldHaveSize(1)
+        }
 
-    "do not return anything when matches partly" {
-        sut.save(UserEntity.from(user))
+        "do not return anything when matches partly" {
+            sut.save(UserEntity.from(user))
 
-        sut.findByFullName("Joel Woe")
-            .shouldBeEmpty()
-    }
+            sut.findByFullName("Joel Woe")
+                .shouldBeEmpty()
+        }
 
-    "do not return anything when input contains extra spaces" {
-        sut.save(UserEntity.from(user))
+        "do not return anything when input contains extra spaces" {
+            sut.save(UserEntity.from(user))
 
-        sut.findByFullName("Joel  White")
-            .shouldBeEmpty()
-    }
-})
+            sut.findByFullName("Joel  White")
+                .shouldBeEmpty()
+        }
+    })

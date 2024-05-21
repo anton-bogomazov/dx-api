@@ -16,13 +16,15 @@ class GetAllUsersTest : StringSpec({
     }
 
     "should return all records from storage" {
-        val storage = UserInMemoryStorage(
-            users = listOf(
-                user(name("Lora", "Palmer")),
-                user(name("Tedd", "Baker")),
-                user(name("Kora", "Wilson")),
+        val storage =
+            UserInMemoryStorage(
+                users =
+                    listOf(
+                        user(name("Lora", "Palmer")),
+                        user(name("Tedd", "Baker")),
+                        user(name("Kora", "Wilson")),
+                    ),
             )
-        )
         val sut = GetAllUsers(storage)
 
         sut.execute().shouldHaveSize(3)

@@ -30,7 +30,7 @@ class NameTest : StringSpec({
                 listOf(
                     NameCreationError.FirstNameIsBlank,
                     NameCreationError.LastNameContainsNonLiterals,
-                ).toNonEmptyListOrNull()
+                ).toNonEmptyListOrNull(),
             )
     }
 

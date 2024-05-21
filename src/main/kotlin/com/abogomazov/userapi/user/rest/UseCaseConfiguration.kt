@@ -12,8 +12,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class UseCaseConfiguration {
     @Bean
-    fun getAllUsers(extractor: UserExtractor) =
-        GetAllUsers(extractor)
+    fun getAllUsers(extractor: UserExtractor) = GetAllUsers(extractor)
 
     @Bean
     fun createNewUser(
@@ -22,7 +21,5 @@ class UseCaseConfiguration {
     ) = CreateNewUser(userAlreadyExists, persister)
 
     @Bean
-    fun userAlreadyExists(
-        extractor: UserExtractor,
-    ) = UserAlreadyExistsInvariant(extractor)
+    fun userAlreadyExists(extractor: UserExtractor) = UserAlreadyExistsInvariant(extractor)
 }

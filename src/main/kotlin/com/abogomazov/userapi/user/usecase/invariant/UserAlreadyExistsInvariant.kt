@@ -7,6 +7,5 @@ import com.abogomazov.userapi.user.usecase.UserExtractor
 class UserAlreadyExistsInvariant(
     private val extractor: UserExtractor,
 ) : UserAlreadyExist {
-    override fun invoke(name: UserName): Boolean =
-        extractor.getByName(name) != null
+    override fun invoke(name: UserName): Boolean = extractor.getByName(name) != null
 }

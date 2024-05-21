@@ -2,7 +2,7 @@ package com.abogomazov.userapi.user.rest.dto
 
 import com.abogomazov.userapi.user.domain.User
 import com.abogomazov.userapi.user.domain.UserName
-import java.util.*
+import java.util.UUID
 
 data class UserDto(
     val id: UUID,

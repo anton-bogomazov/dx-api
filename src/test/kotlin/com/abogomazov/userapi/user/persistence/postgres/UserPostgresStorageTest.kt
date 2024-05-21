@@ -15,13 +15,13 @@ class UserPostgresStorageTest(
     private val sut: UserPostgresStorage,
     private val jdbcTemplate: JdbcTemplate,
 ) : StringSpec({
-    extensions(PostgresCleaner(jdbcTemplate))
+        extensions(PostgresCleaner(jdbcTemplate))
 
-    "saved user can be recovered from persistence" {
-        val user = user()
+        "saved user can be recovered from persistence" {
+            val user = user()
 
-        sut.save(user = user)
+            sut.save(user = user)
 
-        sut.getByName(user.name)!!.id shouldBe user.id
-    }
-})
+            sut.getByName(user.name)!!.id shouldBe user.id
+        }
+    })

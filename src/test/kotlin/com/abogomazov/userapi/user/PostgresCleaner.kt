@@ -9,8 +9,10 @@ import org.springframework.test.jdbc.JdbcTestUtils
 class PostgresCleaner(
     private val jdbcTemplate: JdbcTemplate,
 ) : AfterTestListener {
-
-    override suspend fun afterTest(testCase: TestCase, result: TestResult) {
+    override suspend fun afterTest(
+        testCase: TestCase,
+        result: TestResult,
+    ) {
         JdbcTestUtils.deleteFromTables(jdbcTemplate, "users")
     }
 }

@@ -23,56 +23,56 @@ class CreateUserEndpointTest(
     @MockkBean private val usecase: CreateNewUser,
 ) : StringSpec({
 
-    "user is created from its name" {
-        val userId = user().id
-        every { usecase.execute(any()) } returns userId.right()
+        "user is created from its name" {
+            val userId = user().id
+            every { usecase.execute(any()) } returns userId.right()
 
-        val input = CreateUserRequest(firstName = "John", lastName = "Doe")
-        mockMvc.post(USERS_RESOURCE) {
-            content = input.toJsonString()
-            contentType = MediaType.APPLICATION_JSON
-        }
-            .andExpect {
-                status { isCreated() }
-                content { string("") }
-                header { string("Location", userId.uriLocation().toString()) }
+            val input = CreateUserRequest(firstName = "John", lastName = "Doe")
+            mockMvc.post(USERS_RESOURCE) {
+                content = input.toJsonString()
+                contentType = MediaType.APPLICATION_JSON
             }
-        verify { usecase.execute(any()) }
-    }
+                .andExpect {
+                    status { isCreated() }
+                    content { string("") }
+                    header { string("Location", userId.uriLocation().toString()) }
+                }
+            verify { usecase.execute(any()) }
+        }
 
-    "cannot create user with non-unique name" {
-        every { usecase.execute(any()) } returns UserCreationError.AlreadyExistsWithTheSameName.left()
+        "cannot create user with non-unique name" {
+            every { usecase.execute(any()) } returns UserCreationError.AlreadyExistsWithTheSameName.left()
 
-        val input = CreateUserRequest(firstName = "John", lastName = "Doe")
-        mockMvc.post(USERS_RESOURCE) {
-            content = input.toJsonString()
-            contentType = MediaType.APPLICATION_JSON
-        }.andExpect {
-            contentType(MediaType.APPLICATION_PROBLEM_JSON)
-            status { isUnprocessableEntity() }
-            content {
-                jsonPath("$.type") { value("http://localhost/already_exists") }
-                jsonPath("$.status") { value(HttpStatus.UNPROCESSABLE_ENTITY.value()) }
+            val input = CreateUserRequest(firstName = "John", lastName = "Doe")
+            mockMvc.post(USERS_RESOURCE) {
+                content = input.toJsonString()
+                contentType = MediaType.APPLICATION_JSON
+            }.andExpect {
+                contentType(MediaType.APPLICATION_PROBLEM_JSON)
+                status { isUnprocessableEntity() }
+                content {
+                    jsonPath("$.type") { value("http://localhost/already_exists") }
+                    jsonPath("$.status") { value(HttpStatus.UNPROCESSABLE_ENTITY.value()) }
+                }
+            }
+            verify { usecase.execute(any()) }
+        }
+
+        "cannot create user with invalid name" {
+            every { usecase.execute(any()) } returns user().id.right()
+
+            val input = CreateUserRequest(firstName = "", lastName = "D0e")
+            mockMvc.post(USERS_RESOURCE) {
+                content = input.toJsonString()
+                contentType = MediaType.APPLICATION_JSON
+            }.andExpect {
+                contentType(MediaType.APPLICATION_PROBLEM_JSON)
+                status { isBadRequest() }
+                content {
+                    jsonPath("$.type") { value("http://localhost/bad_request") }
+                    jsonPath("$.status") { value(HttpStatus.BAD_REQUEST.value()) }
+                    jsonPath("$.invalid_params.length()") { value(2) }
+                }
             }
         }
-        verify { usecase.execute(any()) }
-    }
-
-    "cannot create user with invalid name" {
-        every { usecase.execute(any()) } returns user().id.right()
-
-        val input = CreateUserRequest(firstName = "", lastName = "D0e")
-        mockMvc.post(USERS_RESOURCE) {
-            content = input.toJsonString()
-            contentType = MediaType.APPLICATION_JSON
-        }.andExpect {
-            contentType(MediaType.APPLICATION_PROBLEM_JSON)
-            status { isBadRequest() }
-            content {
-                jsonPath("$.type") { value("http://localhost/bad_request") }
-                jsonPath("$.status") { value(HttpStatus.BAD_REQUEST.value()) }
-                jsonPath("$.invalid_params.length()") { value(2) }
-            }
-        }
-    }
-})
+    })

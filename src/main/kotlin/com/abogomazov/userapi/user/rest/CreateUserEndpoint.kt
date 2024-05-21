@@ -19,9 +19,10 @@ import java.net.URI
 class CreateUserEndpoint(
     private val usecase: CreateNewUser,
 ) {
-
     @PostMapping
-    fun handle(@RequestBody request: CreateUserRequest): ResponseEntity<*> =
+    fun handle(
+        @RequestBody request: CreateUserRequest,
+    ): ResponseEntity<*> =
         UserName.validated(request.firstName, request.lastName).fold(
             { it.toInvalidParamsBadRequest() },
             { name ->
@@ -29,12 +30,11 @@ class CreateUserEndpoint(
                     { it.toRestError() },
                     { created(it.uriLocation()) },
                 )
-            }
+            },
         )
 }
 
-fun UserId.uriLocation() =
-    URI("$USERS_RESOURCE/$value")
+fun UserId.uriLocation() = URI("$USERS_RESOURCE/$value")
 
 fun UserCreationError.toRestError() =
     when (this) {
@@ -47,7 +47,10 @@ data class CreateUserRequest(
     val lastName: String,
 )
 
-fun UserName.Companion.validated(firstName: String, lastName: String): Either<NonEmptyList<ValidationError>, UserName> =
+fun UserName.Companion.validated(
+    firstName: String,
+    lastName: String,
+): Either<NonEmptyList<ValidationError>, UserName> =
     UserName(firstName, lastName).mapLeft {
         it.map {
             when (it) {

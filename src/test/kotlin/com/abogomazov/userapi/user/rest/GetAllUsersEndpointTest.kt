@@ -18,14 +18,15 @@ class GetAllUsersEndpointTest(
     @MockkBean private val usecase: GetAllUsers,
 ) : StringSpec({
 
-    "all persisted users returned as dtos" {
-        every { usecase.execute() } returns listOf(user(), user())
+        "all persisted users returned as dtos" {
+            every { usecase.execute() } returns listOf(user(), user())
 
-        val result = mockMvc.get(USERS_RESOURCE)
-            .andExpect { status { isOk() } }
-            .andReturn()
-            .toType<List<UserDto>>()
+            val result =
+                mockMvc.get(USERS_RESOURCE)
+                    .andExpect { status { isOk() } }
+                    .andReturn()
+                    .toType<List<UserDto>>()
 
-        result.shouldHaveSize(2)
-    }
-})
+            result.shouldHaveSize(2)
+        }
+    })

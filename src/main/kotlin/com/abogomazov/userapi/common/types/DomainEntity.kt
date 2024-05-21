@@ -4,7 +4,6 @@ open class DomainEntity<T> protected constructor(
     val id: T,
     var version: Version,
 ) {
-
     private var events = ArrayList<DomainEvent>()
 
     protected fun addEvent(event: DomainEvent) {
@@ -22,7 +21,6 @@ open class DomainEntity<T> protected constructor(
 }
 
 data class Version internal constructor(private val value: Long) : ValueObject {
-
     fun toLongValue() = value
 
     fun next() = Version(value + 1)
@@ -31,6 +29,7 @@ data class Version internal constructor(private val value: Long) : ValueObject {
 
     companion object {
         fun new() = Version(0L)
+
         fun from(value: Long) = Version(value)
     }
 }

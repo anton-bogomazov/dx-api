@@ -15,14 +15,15 @@ data class UserName private constructor(
         operator fun invoke(
             firstName: String,
             lastName: String,
-        ): Either<NonEmptyList<NameCreationError>, UserName> = either {
-            zipOrAccumulate(
-                { FirstName.from(firstName).bindNel() },
-                { LastName.from(lastName).bindNel() },
-            ) { first, last ->
-                UserName(first, last)
+        ): Either<NonEmptyList<NameCreationError>, UserName> =
+            either {
+                zipOrAccumulate(
+                    { FirstName.from(firstName).bindNel() },
+                    { LastName.from(lastName).bindNel() },
+                ) { first, last ->
+                    UserName(first, last)
+                }
             }
-        }
     }
 
     val fullName: FullName
@@ -36,7 +37,7 @@ data class UserName private constructor(
                 zipOrAccumulate(
                     { ensure(value.isNotEmpty()) { NameCreationError.FirstNameIsBlank } },
                     { ensure(value.all { it.isLetter() }) { NameCreationError.FirstNameContainsNonLiterals } },
-                ) { _, _, -> FirstName(value) }
+                ) { _, _ -> FirstName(value) }
             }
     }
 }
@@ -48,7 +49,7 @@ data class UserName private constructor(
                 zipOrAccumulate(
                     { ensure(value.isNotEmpty()) { NameCreationError.LastNameIsBlank } },
                     { ensure(value.all { it.isLetter() }) { NameCreationError.LastNameContainsNonLiterals } },
-                ) { _, _, -> LastName(value) }
+                ) { _, _ -> LastName(value) }
             }
     }
 }
@@ -57,7 +58,10 @@ data class UserName private constructor(
 
 sealed interface NameCreationError {
     data object FirstNameIsBlank : NameCreationError
+
     data object FirstNameContainsNonLiterals : NameCreationError
+
     data object LastNameIsBlank : NameCreationError
+
     data object LastNameContainsNonLiterals : NameCreationError
 }

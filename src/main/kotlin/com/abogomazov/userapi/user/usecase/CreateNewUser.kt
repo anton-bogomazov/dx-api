@@ -11,15 +11,13 @@ class CreateNewUser(
     private val userAlreadyExists: UserAlreadyExist,
     private val persister: UserPersister,
 ) {
-    fun execute(
-        name: UserName,
-    ): Either<UserCreationError.AlreadyExistsWithTheSameName, UserId> =
+    fun execute(name: UserName): Either<UserCreationError.AlreadyExistsWithTheSameName, UserId> =
         User.createNewUser(
             name = name,
             userAlreadyExists = userAlreadyExists,
         )
-        .map { user ->
-            persister.save(user)
-            user.id
-        }
+            .map { user ->
+                persister.save(user)
+                user.id
+            }
 }

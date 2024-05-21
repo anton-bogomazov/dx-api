@@ -13,22 +13,22 @@ class User(
     val name: UserName,
     version: Version,
 ) : AggregateRoot<UserId>(id, version) {
-
     companion object {
         fun createNewUser(
             name: UserName,
             userAlreadyExists: UserAlreadyExist,
-        ): Either<UserCreationError.AlreadyExistsWithTheSameName, User> = either {
-            ensure(!userAlreadyExists(name)) { UserCreationError.AlreadyExistsWithTheSameName }
+        ): Either<UserCreationError.AlreadyExistsWithTheSameName, User> =
+            either {
+                ensure(!userAlreadyExists(name)) { UserCreationError.AlreadyExistsWithTheSameName }
 
-            User(
-                id = UserId.next(),
-                name = name,
-                version = Version.new(),
-            ).apply {
-                addEvent(UserCreated(id))
+                User(
+                    id = UserId.next(),
+                    name = name,
+                    version = Version.new(),
+                ).apply {
+                    addEvent(UserCreated(id))
+                }
             }
-        }
     }
 }
 
