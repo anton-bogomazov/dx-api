@@ -41,7 +41,7 @@ dependencies {
     testImplementation("org.testcontainers:postgresql:1.19.8")
 }
 
-val mainClass by extra("com.abogomazov.userapi.MainKt")
+val mainClass by extra("com.abogomazov.userapi.UserApiApplicationKt")
 
 jib {
     container {
