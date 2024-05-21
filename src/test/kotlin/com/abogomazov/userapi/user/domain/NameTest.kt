@@ -24,7 +24,7 @@ class NameTest : StringSpec({
             .shouldBeLeft(NameCreationError.LastNameContainsNonLiterals.nel())
     }
 
-    "validation errors is accumulated" {
+    "validation errors are accumulated" {
         UserName(firstName = "", lastName = "Wh1te")
             .shouldBeLeft(
                 listOf(

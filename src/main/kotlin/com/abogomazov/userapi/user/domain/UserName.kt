@@ -17,12 +17,10 @@ data class UserName private constructor(
             lastName: String,
         ): Either<NonEmptyList<NameCreationError>, UserName> = either {
             zipOrAccumulate(
-                { ensure(firstName.isNotEmpty()) { NameCreationError.FirstNameIsBlank } },
-                { ensure(lastName.isNotEmpty()) { NameCreationError.LastNameIsBlank } },
-                { ensure(firstName.all { it.isLetter() }) { NameCreationError.FirstNameContainsNonLiterals } },
-                { ensure(lastName.all { it.isLetter() }) { NameCreationError.LastNameContainsNonLiterals } },
-            ) { _, _, _, _ ->
-                UserName(FirstName(firstName), LastName(lastName))
+                { FirstName.from(firstName).bindNel() },
+                { LastName.from(lastName).bindNel() },
+            ) { first, last ->
+                UserName(first, last)
             }
         }
     }
@@ -31,9 +29,29 @@ data class UserName private constructor(
         get() = FullName("${firstName.value} ${lastName.value}")
 }
 
-@JvmInline value class FirstName(val value: String)
+@JvmInline value class FirstName(val value: String) {
+    companion object {
+        fun from(value: String): Either<NonEmptyList<NameCreationError>, FirstName> =
+            either {
+                zipOrAccumulate(
+                    { ensure(value.isNotEmpty()) { NameCreationError.FirstNameIsBlank } },
+                    { ensure(value.all { it.isLetter() }) { NameCreationError.FirstNameContainsNonLiterals } },
+                ) { _, _, -> FirstName(value) }
+            }
+    }
+}
 
-@JvmInline value class LastName(val value: String)
+@JvmInline value class LastName(val value: String) {
+    companion object {
+        fun from(value: String): Either<NonEmptyList<NameCreationError>, LastName> =
+            either {
+                zipOrAccumulate(
+                    { ensure(value.isNotEmpty()) { NameCreationError.LastNameIsBlank } },
+                    { ensure(value.all { it.isLetter() }) { NameCreationError.LastNameContainsNonLiterals } },
+                ) { _, _, -> LastName(value) }
+            }
+    }
+}
 
 @JvmInline value class FullName(val value: String)
 
