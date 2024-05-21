@@ -1,5 +1,6 @@
 package com.abogomazov.userapi.user.persistence.postgres
 
+import com.abogomazov.userapi.common.events.DomainEventPublisher
 import com.abogomazov.userapi.user.domain.User
 import com.abogomazov.userapi.user.domain.UserName
 import com.abogomazov.userapi.user.usecase.UserExtractor
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component
 @Component
 class UserPostgresStorage(
     private val repository: UserRepository,
+    private val eventPublisher: DomainEventPublisher,
 ) : UserExtractor, UserPersister {
     override fun getByName(name: UserName): User? {
         val users = repository.findByFullName(name.fullName.value)
@@ -25,5 +27,6 @@ class UserPostgresStorage(
 
     override fun save(user: User) {
         repository.save(UserEntity.from(user))
+        eventPublisher.publish(user.popEvents())
     }
 }
