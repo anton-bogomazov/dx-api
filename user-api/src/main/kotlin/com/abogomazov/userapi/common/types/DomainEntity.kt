@@ -7,7 +7,7 @@ open class DomainEntity<T> protected constructor(
     private var events = ArrayList<DomainEvent>()
 
     protected fun addEvent(event: DomainEvent) {
-        if (events.isEmpty()) {
+        if (events.isEmpty() && !version.isFirst()) {
             version = version.next()
         }
         events.add(event)
@@ -26,6 +26,8 @@ data class Version internal constructor(private val value: Long) : ValueObject {
     fun next() = Version(value + 1)
 
     fun previous() = Version(value - 1)
+
+    fun isFirst() = value == 0L
 
     companion object {
         fun new() = Version(0L)
