@@ -1,4 +1,4 @@
-package performance
+package com.abogomazov.userapi.tests.performance
 
 import kotlin.time.Duration
 

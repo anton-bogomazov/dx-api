@@ -1,4 +1,4 @@
-package performance
+package com.abogomazov.userapi.tests
 
 import java.io.File
 import java.io.FileInputStream
@@ -43,7 +43,10 @@ class StandConfiguration {
         dockerComposeEnv = props.entries.associate { it.key.toString() to it.value.toString() }
     }
 
-    private fun Properties.property(name: String) = requireNotNull(getProperty(name)) { "Property $name must not be null" }
+    private fun Properties.property(name: String) =
+        requireNotNull(getProperty(name)) {
+            "Property $name must not be null"
+        }
 
     override fun toString(): String {
         return "StandConfiguration(usersBaseUrl='$usersBaseUrl', \n" +

@@ -3,5 +3,9 @@ plugins {
 }
 rootProject.name = "cd"
 
-include("tests")
 include("user-api")
+
+include("tests")
+include("tests:e2e")
+include("tests:performance")
+include("tests:common")

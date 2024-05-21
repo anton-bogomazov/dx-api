@@ -1,5 +1,7 @@
-package performance
+package com.abogomazov.userapi.tests.performance
 
+import com.abogomazov.userapi.tests.StandConfiguration
+import com.abogomazov.userapi.tests.StandContainer
 import io.gatling.javaapi.core.CoreDsl.constantUsersPerSec
 import io.gatling.javaapi.core.CoreDsl.global
 import io.gatling.javaapi.core.CoreDsl.scenario
