@@ -1,1 +1,15 @@
-// todo get users performance test
+// todo get users performance and other tests
+// swagger
+// logging
+
+// version/removed flag
+// add simple FE (reactive https://github.com/meistermeier/reactive-thymeleaf)
+// add messaging
+
+// add description
+
+// todo add security
+
+// healthchecks-metrics-observability-grafana-actuator
+
+// split into modules
