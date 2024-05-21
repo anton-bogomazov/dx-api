@@ -4,12 +4,10 @@ import io.gitlab.arturbosch.detekt.Detekt
 val parentProjectDir = projectDir
 
 plugins {
-    kotlin("jvm") version "1.9.24" apply false
-    id("org.jetbrains.kotlin.plugin.spring") version "1.9.24" apply false
-    id("com.google.cloud.tools.jib") version "3.4.2" apply false
-    id("io.gitlab.arturbosch.detekt") version "1.23.6"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
-    id("com.github.ben-manes.versions") version "0.51.0" apply false
+    id(Plugins.kotlin) version Plugins.Versions.kotlin apply false
+    id(Plugins.detekt) version Plugins.Versions.detekt
+    id(Plugins.ktlint) version Plugins.Versions.ktlint
+    id(Plugins.update_dependencies) version Plugins.Versions.update_dependencies
 }
 
 subprojects {
@@ -18,13 +16,13 @@ subprojects {
     version = "1.0-SNAPSHOT"
 
     apply {
-        plugin("org.jetbrains.kotlin.jvm")
-        plugin("org.jetbrains.kotlin.plugin.spring")
-        plugin("com.google.cloud.tools.jib")
-        plugin("io.gitlab.arturbosch.detekt")
-        plugin("org.jlleitschuh.gradle.ktlint")
-        plugin("com.github.ben-manes.versions")
-        plugin("java-test-fixtures")
+        plugin("java")
+        plugin("jacoco")
+        plugin(Plugins.kotlin)
+        plugin(Plugins.detekt)
+        plugin(Plugins.ktlint)
+        plugin(Plugins.update_dependencies)
+        plugin(Plugins.test_fixtures)
     }
 
     repositories {

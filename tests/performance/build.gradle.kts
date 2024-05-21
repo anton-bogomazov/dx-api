@@ -1,15 +1,15 @@
 plugins {
-    kotlin("jvm") version "1.9.24"
-    id("io.gatling.gradle") version "3.11.2"
+    id(Plugins.kotlin) version Plugins.Versions.kotlin
+    id(Plugins.gatling) version Plugins.Versions.gatling
 }
 
 // GATLING
 dependencies {
     gatlingImplementation(project(":tests:common"))
-    gatlingImplementation("io.rest-assured:rest-assured:5.4.0")
-    gatlingImplementation("io.rest-assured:kotlin-extensions:5.4.0")
-    gatlingImplementation("net.datafaker:datafaker:2.2.2")
-    gatlingImplementation("org.testcontainers:testcontainers:1.19.8")
+    gatlingImplementation(Libs.rest_assured)
+    gatlingImplementation(Libs.rest_assured_kotlin)
+    gatlingImplementation(Libs.faker)
+    gatlingImplementation(Libs.testcontainers_core)
 }
 
 gatling {

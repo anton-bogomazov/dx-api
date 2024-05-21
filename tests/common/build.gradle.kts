@@ -1,5 +1,5 @@
 dependencies {
-    implementation("org.testcontainers:testcontainers:1.19.8")
+    implementation(Libs.testcontainers_core)
 }
 
 kotlin {

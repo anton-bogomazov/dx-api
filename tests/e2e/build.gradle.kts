@@ -1,11 +1,11 @@
 plugins {
-    id(Plugins.allure) version PluginVers.allure
+    id(Plugins.allure) version Plugins.Versions.allure
 }
 
 allure {
     adapter {
-        version.set(PluginVers.allure_cli)
-        allureJavaVersion.set(PluginVers.allure_java)
+        version.set(Plugins.Versions.allure_cli)
+        allureJavaVersion.set(Plugins.Versions.allure_java)
 
         frameworks {
             junit5 {
@@ -15,7 +15,6 @@ allure {
     }
 }
 dependencies {
-    // test
     testImplementation(Libs.kotest_junit)
     testImplementation(Libs.kotest_arrow)
     testImplementation(Libs.junit_engine)
@@ -30,13 +29,9 @@ dependencies {
     testImplementation(Libs.jfix_corounit_allure)
     testImplementation(Libs.jfix_corounit_engine)
     testImplementation(Libs.koin)
-    testImplementation(Libs.commons_net)
-//    testImplementation(testFixtures(project(":shop:application")))
 
     testFixturesImplementation(Libs.faker)
-//    testFixturesImplementation(testFixtures(project(":shop:application")))
     testFixturesImplementation(Libs.kbdd)
-    testFixturesImplementation(Libs.commons_net)
 }
 
 tasks.withType<Test> {
