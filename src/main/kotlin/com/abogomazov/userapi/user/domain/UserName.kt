@@ -5,11 +5,12 @@ import arrow.core.NonEmptyList
 import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.zipOrAccumulate
+import com.abogomazov.userapi.common.types.ValueObject
 
 data class UserName private constructor(
     val firstName: FirstName,
     val lastName: LastName,
-) {
+) : ValueObject {
     companion object {
         operator fun invoke(
             firstName: String,
