@@ -28,6 +28,7 @@ dependencies {
     implementation(Libs.spring_boot_starter_web)
     implementation(Libs.spring_boot_started_hateoas)
     implementation(Libs.jackson_kotlin)
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 
     // PERSISTENCE
     runtimeOnly(Libs.postgres_driver)
