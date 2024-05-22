@@ -3,6 +3,7 @@ package com.abogomazov.userapi.convention
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import io.gitlab.arturbosch.detekt.Detekt
+import info.solidsoft.gradle.pitest.PitestPluginExtension
 
 plugins {
     kotlin("jvm")
@@ -15,7 +16,7 @@ apply {
     plugin(Plugins.detekt)
     plugin(Plugins.ktlint)
     plugin(Plugins.update_dependencies)
-    plugin("org.jlleitschuh.gradle.ktlint")
+    plugin(Plugins.pitest)
 }
 
 kotlin {
@@ -109,5 +110,9 @@ tasks {
         rejectVersionIf {
             isNonStable(candidate.version) && !isNonStable(currentVersion)
         }
+    }
+
+    configure<PitestPluginExtension> {
+        targetClasses.set(listOf("com.abogomazov.userapi.*"))
     }
 }

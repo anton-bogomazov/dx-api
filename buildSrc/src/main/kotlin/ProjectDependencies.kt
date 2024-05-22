@@ -28,6 +28,7 @@ object Libs {
         const val mockk = "1.13.11"
         const val mockk_spring = "4.0.2"
         const val kotest_spring = "1.1.3"
+        const val kotest_pitest = "1.2.0"
     }
     // Kotlin
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Global.kotlin_version}"
@@ -72,6 +73,7 @@ object Libs {
     const val kotest_assert = "io.kotest:kotest-assertions-core-jvm:${Versions.kotest}"
     const val kotest_spring = "io.kotest.extensions:kotest-extensions-spring:${Versions.kotest_spring}"
     const val kotest_arrow = "io.kotest.extensions:kotest-assertions-arrow:${Versions.kotest_arrow}"
+    const val kotest_pitest = "io.kotest.extensions:kotest-extensions-pitest:${Versions.kotest_pitest}"
     const val arch_unit = "com.tngtech.archunit:archunit:${Versions.arch_unit}"
     const val mockk_spring = "com.ninja-squad:springmockk:${Versions.mockk_spring}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
@@ -116,7 +118,7 @@ object Plugins {
         const val spring_kotlin = Global.kotlin_version
         const val update_dependencies = "0.51.0"
         const val owasp_dependencies = "6.1.0"
-        const val pitest = "1.7.0"
+        const val pitest = "1.15.0"
         const val allure = "2.11.2"
         const val allure_cli = "2.29.0"
         const val allure_java = "2.27.0"

@@ -18,6 +18,7 @@ dependencies {
     testImplementation(Libs.arch_unit)
     testImplementation(Libs.mockk)
     testImplementation(Libs.mockk_spring)
+    testImplementation(Libs.kotest_pitest)
 
     testFixturesImplementation(project(":user-api"))
     testFixturesImplementation(Libs.kotest_arrow)
