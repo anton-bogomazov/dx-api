@@ -1,7 +1,7 @@
-dependencies {
-    implementation(Libs.testcontainers_core)
+plugins {
+    id(Plugins.kotlin)
 }
 
-kotlin {
-    jvmToolchain(21)
+dependencies {
+    implementation(Libs.testcontainers_core)
 }

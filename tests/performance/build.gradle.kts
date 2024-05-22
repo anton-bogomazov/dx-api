@@ -1,5 +1,5 @@
 plugins {
-    id(Plugins.kotlin) version Plugins.Versions.kotlin
+    id(Plugins.kotlin)
     id(Plugins.gatling) version Plugins.Versions.gatling
 }
 
@@ -45,8 +45,4 @@ gatling {
 
     val usersSize = System.getProperty(usersSizeProperty, "1200")
     systemProperties[usersSizeProperty] = usersSize
-}
-
-kotlin {
-    jvmToolchain(21)
 }

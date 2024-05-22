@@ -125,7 +125,8 @@ object Plugins {
         const val ktlint = "12.1.1"
     }
 
-    const val kotlin = "org.jetbrains.kotlin.jvm"
+    const val kotlin = "com.abogomazov.userapi.convention.kotlin-jvm"
+//    const val kotlin = "org.jetbrains.kotlin.jvm"
     const val spring_boot = "org.springframework.boot"
     const val detekt = "io.gitlab.arturbosch.detekt"
     const val detekt_formatting = "io.gitlab.arturbosch.detekt:detekt-formatting"

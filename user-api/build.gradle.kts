@@ -1,6 +1,6 @@
 plugins {
+    id(Plugins.kotlin)
     id(Plugins.spring_boot) version Plugins.Versions.spring_boot
-    id(Plugins.kotlin) version Plugins.Versions.kotlin
     id(Plugins.spring_kotlin) version Plugins.Versions.spring_kotlin
     id(Plugins.jib) version Plugins.Versions.jib
     id(Plugins.test_fixtures)
@@ -47,8 +47,4 @@ jib {
     to {
         image = "abogomazov/user-api"
     }
-}
-
-kotlin {
-    jvmToolchain(21)
 }

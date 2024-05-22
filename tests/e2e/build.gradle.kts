@@ -1,4 +1,5 @@
 plugins {
+    id(Plugins.kotlin)
     id(Plugins.allure) version Plugins.Versions.allure
 }
 
@@ -55,8 +56,4 @@ tasks.withType<Test> {
 
     val startDocker = System.getProperty(startDockerProperty, "true")
     systemProperty(startDockerProperty, startDocker)
-}
-
-kotlin {
-    jvmToolchain(21)
 }
