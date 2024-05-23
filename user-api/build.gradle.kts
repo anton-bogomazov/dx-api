@@ -41,7 +41,6 @@ dependencies {
     testImplementation(Libs.testcontainers_postgres)
 
     // OBSERVABILITY
-    // FIXME spring-boot-dependencies
     implementation(platform("org.springframework.boot:spring-boot-dependencies:3.2.5"))
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus")

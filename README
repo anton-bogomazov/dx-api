@@ -1,16 +1,21 @@
-// todo get users performance and other tests
-// add pact contract testing
-// logging
-
-// version/removed flag
-
+APP:
 // add messaging
-
-// add description
-
-// todo add security
-
-// spring admin
-
 // split into modules
 // add few more services
+// version/removed flag
+
+TEST:
+// todo get users performance and other tests
+// add pact contract testing
+
+TECH:
+// FIXME spring-boot-dependencies
+// add spring boot dockerized convention
+// scripts for different types of tests
+
+SEC:
+// todo add security
+
+DOC:
+// add description
+// adrs
