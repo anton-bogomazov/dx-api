@@ -39,10 +39,11 @@ dependencies {
     testImplementation(Libs.testcontainers_postgres)
 
     // OBSERVABILITY
-    // FIXME
+    // FIXME spring-boot-dependencies
     implementation(platform("org.springframework.boot:spring-boot-dependencies:3.2.5"))
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus")
+    implementation("de.codecentric:spring-boot-admin-starter-client:3.2.3")
 }
 
 val mainClass by extra("com.abogomazov.userapi.UserApiApplicationKt")

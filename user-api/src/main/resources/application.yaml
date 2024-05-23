@@ -10,8 +10,15 @@ spring:
     password: ${POSTGRES_PASS}
     driver-class-name: org.postgresql.Driver
 
+  boot:
+    admin:
+      client:
+        url: "http://spring-boot-admin:8060"
 management:
   endpoints:
     web:
       exposure:
-        include: health, info, prometheus, metrics
+        include: '*'
+  info:
+    env:
+      enabled: true
