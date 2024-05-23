@@ -29,6 +29,15 @@ repositories {
 
 dependencies {
     implementation(Libs.arrow)
+
+    implementation(Libs.slf4j_api)
+
+    testImplementation(Libs.kotest_junit)
+    testImplementation(Libs.kotest_assert)
+    testImplementation(Libs.kotest_arrow)
+    testImplementation(Libs.mockk)
+
+    testImplementation(Libs.kotest_pitest)
 }
 
 tasks {

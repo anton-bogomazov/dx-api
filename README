@@ -9,7 +9,6 @@ TEST:
 // add pact contract testing
 
 TECH:
-// FIXME spring-boot-dependencies
 // add spring boot dockerized convention
 // scripts for different types of tests
 
