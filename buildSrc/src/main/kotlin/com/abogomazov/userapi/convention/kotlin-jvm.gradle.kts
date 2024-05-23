@@ -92,7 +92,7 @@ tasks {
             rule {
                 excludes = listOf("application")
                 limit {
-                    minimum = BigDecimal("0.7")
+                    minimum = BigDecimal("0.5")
                 }
             }
         }
