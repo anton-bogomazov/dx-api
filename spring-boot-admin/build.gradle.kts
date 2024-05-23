@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
     implementation("de.codecentric:spring-boot-admin-starter-server:3.2.3")
+    implementation(Libs.spring_boot_starter_logging)
+    implementation(Libs.slf4j_api)
 }
 
 val mainClass by extra("com.abogomazov.userapi.admin.SpringBootAdminServerApplicationKt")

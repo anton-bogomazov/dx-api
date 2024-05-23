@@ -19,6 +19,8 @@ dependencies {
     testImplementation(Libs.mockk)
     testImplementation(Libs.mockk_spring)
     testImplementation(Libs.kotest_pitest)
+    implementation(Libs.spring_boot_starter_logging)
+    implementation(Libs.slf4j_api)
 
     testFixturesImplementation(project(":user-api"))
     testFixturesImplementation(Libs.kotest_arrow)
