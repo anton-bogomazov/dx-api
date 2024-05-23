@@ -46,6 +46,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus")
     implementation("de.codecentric:spring-boot-admin-starter-client:3.2.3")
+    implementation("org.springframework.cloud:spring-cloud-starter-sleuth:3.1.11")
 }
 
 val mainClass by extra("com.abogomazov.userapi.UserApiApplicationKt")
