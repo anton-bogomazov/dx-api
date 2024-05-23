@@ -1,7 +1,5 @@
 plugins {
-    id(Plugins.kotlin)
-    id(Plugins.spring_kotlin) version Plugins.Versions.spring_kotlin
-    id(Plugins.jib) version Plugins.Versions.jib
+    com.abogomazov.userapi.convention.`spring-application`
 }
 
 dependencies {
@@ -10,12 +8,10 @@ dependencies {
     implementation(Libs.slf4j_api)
 }
 
-val mainClass by extra("com.abogomazov.userapi.admin.SpringBootAdminServerApplicationKt")
-
 jib {
     container {
         ports = listOf("8060")
-        mainClass = mainClass
+        mainClass = "com.abogomazov.userapi.admin.SpringBootAdminServerApplicationKt"
     }
     to {
         image = "abogomazov/spring-boot-admin"

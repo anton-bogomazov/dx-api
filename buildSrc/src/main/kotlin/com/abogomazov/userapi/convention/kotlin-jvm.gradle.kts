@@ -27,6 +27,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation(Libs.arrow)
+}
+
 tasks {
     val failOnWarning = project.properties["allWarningsAsErrors"] != null &&
             project.properties["allWarningsAsErrors"] == "true"

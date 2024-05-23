@@ -1,15 +1,9 @@
 plugins {
-    id(Plugins.kotlin)
-    id(Plugins.spring_boot) version Plugins.Versions.spring_boot
-    id(Plugins.spring_kotlin) version Plugins.Versions.spring_kotlin
-    id(Plugins.jib) version Plugins.Versions.jib
-    id(Plugins.test_fixtures)
+    com.abogomazov.userapi.convention.`spring-application`
 }
 
 dependencies {
     // COMMON
-    implementation(Libs.arrow)
-
     testImplementation(Libs.spring_boot_starter_test)
     testImplementation(Libs.kotest_arrow)
     testImplementation(Libs.kotest_junit)
@@ -48,12 +42,10 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-sleuth:3.1.11")
 }
 
-val mainClass by extra("com.abogomazov.userapi.UserApiApplicationKt")
-
 jib {
     container {
         ports = listOf("8080")
-        mainClass = mainClass
+        mainClass = "com.abogomazov.userapi.UserApiApplicationKt"
     }
     to {
         image = "abogomazov/user-api"
