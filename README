@@ -1,15 +1,16 @@
 // todo get users performance and other tests
-// swagger
+// add pact contract testing
 // logging
 
 // version/removed flag
-// add simple FE (reactive https://github.com/meistermeier/reactive-thymeleaf)
+
 // add messaging
 
 // add description
 
 // todo add security
 
-// healthchecks-metrics-observability-grafana-actuator
+// spring admin
 
 // split into modules
+// add few more services
