@@ -1,4 +1,4 @@
-package com.abogomazov.userapi.user.rest
+package com.abogomazov.userapi.common.rest
 
 import arrow.core.NonEmptyList
 import org.springframework.hateoas.mediatype.problem.Problem
