@@ -1,4 +1,4 @@
-package com.abogomazov.userapi.user.rest
+package com.abogomazov.userapi
 
 import com.abogomazov.userapi.user.domain.UserAlreadyExist
 import com.abogomazov.userapi.user.usecase.CreateNewUser
