@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+
+  user-api:
+    restart: always
+    image: abogomazov/user-api:latest
+    ports:
+      - ${USER_API_PORT}:${USER_API_PORT}
+    environment:
+      - SERVER_PORT=${USER_API_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASS=${POSTGRES_PASS}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_INTERNAL_PORT}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - SPRING_BOOT_ADMIN_INTERNAL_PORT=${SPRING_BOOT_ADMIN_INTERNAL_PORT}
+    depends_on:
+      - rabbitmq

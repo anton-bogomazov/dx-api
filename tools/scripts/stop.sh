@@ -3,5 +3,8 @@ set -e
 currentDir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 rootDir="$currentDir/../../"
 
-(cd "$rootDir" && exec docker-compose -f ./tools/docker/docker-compose.yml \
---env-file ./tools/docker/env/local.env --project-name=user-api stop)
+(cd "$rootDir" && exec docker-compose  \
+  -f ./tools/docker/infrastructure.yml \
+  -f ./tools/docker/monitoring.yml \
+  -f ./tools/docker/services.yml \
+--env-file ./tools/docker/env/local.env --profile local --project-name=user-api stop)

@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+
+  spring-boot-admin:
+    restart: always
+    image: abogomazov/spring-boot-admin:latest
+    ports:
+      - ${SPRING_BOOT_ADMIN_PORT}:${SPRING_BOOT_ADMIN_INTERNAL_PORT}
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - ${PROMETHEUS_PORT}:9090
+    volumes:
+      - prometheus:/prometheus
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - ${GRAFANA_PORT}:3000
+    volumes:
+      - grafana:/var/lib/grafana
+      - ./monitoring/dashboards.yaml:/etc/grafana/provisioning/dashboards/all.yaml
+      - ./monitoring/datasources.yaml:/etc/grafana/provisioning/datasources/all.yaml
+      - ./monitoring/spring-boot-dashboard.json:/var/lib/grafana/dashboards/spring-boot-dashboard.json
+
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - ${LOKI_PORT}:3100
+    command: -config.file=/etc/loki/local-config.yaml
+
+volumes:
+  prometheus:
+  grafana:
