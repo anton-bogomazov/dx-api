@@ -10,12 +10,11 @@ TEST:
 
 TECH:
 // scripts for different types of tests
-// configure linter properly
 // https://martinfowler.com/articles/richardsonMaturityModel.html
-// add loki dashboard json | line extractor
 // org.webjars:hal-explorer? resilience4j_circuitbreaker? resilience4j_bulkhead?
 
 OBSERVABILITY:
+// add loki dashboard json | line extractor
 
 SEC:
 // todo add security
