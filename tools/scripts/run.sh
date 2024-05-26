@@ -3,6 +3,8 @@ set -e
 currentDir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 rootDir="$currentDir/../../"
 
+started_at=$(date +%s)
+
 (cd "$rootDir" && exec ./tools/scripts/build.sh)
 (cd "$rootDir" && exec ./gradlew jibDockerBuild)
 (cd "$rootDir" && exec docker-compose -f ./tools/docker/docker-compose.yml --env-file \
@@ -13,3 +15,5 @@ portainerPort=$(cd "$rootDir" && cat ./tools/docker/env/local.env | grep "PORTAI
 printf 'Local stack ENVs\n'
 (cd "$rootDir" && exec cat ./tools/docker/env/local.env)
 printf "\nPortainer GUI is available at http://localhost:$portainerPort/#/dashboard\n"
+
+echo "Finished in $(($(date +%s) - $started_at)) seconds"
