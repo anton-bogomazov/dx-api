@@ -8,5 +8,5 @@ dependencies {
 
     testImplementation(testFixtures(project(":user-api:domain")))
 
-    testFixturesImplementation(Libs.kotest_arrow)
+    testFixturesImplementation(TestingLibs.kotest_arrow)
 }

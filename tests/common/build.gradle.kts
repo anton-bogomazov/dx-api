@@ -1,7 +1,7 @@
 plugins {
-    id(Plugins.kotlin)
+    id(Conventions.kotlin_module)
 }
 
 dependencies {
-    implementation(Libs.testcontainers_core)
+    implementation(TestingLibs.testcontainers_core)
 }

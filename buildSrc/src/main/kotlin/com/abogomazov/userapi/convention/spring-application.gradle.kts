@@ -8,6 +8,3 @@ apply {
     plugin(Plugins.spring_boot)
     plugin(Plugins.jib)
 }
-
-dependencies {
-}

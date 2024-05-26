@@ -28,16 +28,15 @@ repositories {
 }
 
 dependencies {
-    implementation(Libs.arrow)
+    implementation(CoreLibs.arrow)
 
     implementation(ObservabilityLibs.slf4j_api)
 
-    testImplementation(Libs.kotest_junit)
-    testImplementation(Libs.kotest_assert)
-    testImplementation(Libs.kotest_arrow)
-    testImplementation(Libs.mockk)
-
-    testImplementation(Libs.kotest_pitest)
+    testImplementation(TestingLibs.kotest_junit)
+    testImplementation(TestingLibs.kotest_assert)
+    testImplementation(TestingLibs.kotest_arrow)
+    testImplementation(TestingLibs.mockk)
+    testImplementation(TestingLibs.kotest_pitest)
 }
 
 tasks {

@@ -13,11 +13,10 @@ TECH:
 // configure linter properly
 // https://martinfowler.com/articles/richardsonMaturityModel.html
 // groom docker-compose
-// groom gradle configs
-// log build/run times
 // add loki dashboard json | line extractor
 // docker image versioning
 // proper logback config
+// org.webjars:hal-explorer? resilience4j_circuitbreaker? resilience4j_bulkhead?
 
 OBSERVABILITY:
 // Business metrics on grafana board

@@ -5,5 +5,5 @@ plugins {
 dependencies {
     implementation(project(":common"))
 
-    testFixturesImplementation(Libs.kotest_arrow)
+    testFixturesImplementation(TestingLibs.kotest_arrow)
 }

@@ -4,8 +4,6 @@ plugins {
 
 dependencies {
     implementation(ObservabilityLibs.spring_admin_server)
-    implementation(ObservabilityLibs.spring_boot_starter_logging)
-    implementation(ObservabilityLibs.slf4j_api)
 }
 
 jib {

@@ -9,10 +9,10 @@ apply {
 }
 
 dependencies {
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:3.2.5"))
-    implementation(Libs.spring_boot_starter_logging)
+    implementation(platform(CoreLibs.spring_dependencies))
+    implementation(ObservabilityLibs.spring_boot_starter_logging)
 
-    testImplementation(Libs.spring_boot_starter_test)
-    testImplementation(Libs.kotest_spring)
-    testImplementation(Libs.mockk_spring)
+    testImplementation(TestingLibs.spring_boot_starter_test)
+    testImplementation(TestingLibs.kotest_spring)
+    testImplementation(TestingLibs.mockk_spring)
 }

@@ -7,11 +7,12 @@ dependencies {
     implementation(project(":user-api:domain"))
     implementation(project(":user-api:usecase"))
 
-    implementation(Libs.spring_boot_starter_web)
-    implementation(Libs.spring_boot_started_hateoas)
-    implementation(Libs.jackson_kotlin)
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+    implementation(WebLibs.spring_boot_starter_web)
+    implementation(WebLibs.spring_boot_started_hateoas)
+    implementation(WebLibs.jackson_kotlin)
+    implementation(WebLibs.openapi_ui)
 
     testImplementation(testFixtures(project(":user-api:domain")))
-    testFixturesImplementation(Libs.spring_boot_starter_test)
+
+    testFixturesImplementation(TestingLibs.spring_boot_starter_test)
 }

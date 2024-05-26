@@ -1,5 +1,5 @@
 plugins {
-    id(Plugins.kotlin)
+    id(Conventions.kotlin_module)
     id(Plugins.allure) version Plugins.Versions.allure
 }
 
@@ -16,23 +16,17 @@ allure {
     }
 }
 dependencies {
-    testImplementation(Libs.kotest_junit)
-    testImplementation(Libs.kotest_arrow)
-    testImplementation(Libs.junit_engine)
-    testImplementation(Libs.junit_params)
-    testImplementation(Libs.testcontainers_core)
+    testImplementation(TestingLibs.kotest_junit)
+    testImplementation(TestingLibs.kotest_arrow)
+    testImplementation(TestingLibs.testcontainers_core)
     testImplementation(project(":tests:common"))
 
-    testImplementation(Libs.kbdd)
-    testImplementation(Libs.rest_assured)
-    testImplementation(Libs.jackson_kotlin)
-    testImplementation(Libs.jackson_databind)
-    testImplementation(Libs.jfix_corounit_allure)
-    testImplementation(Libs.jfix_corounit_engine)
-    testImplementation(Libs.koin)
+    testImplementation(TestingLibs.rest_assured)
+    testImplementation(WebLibs.jackson_kotlin)
+    testImplementation(WebLibs.jackson_databind)
+    testImplementation(CoreLibs.koin)
 
-    testFixturesImplementation(Libs.faker)
-    testFixturesImplementation(Libs.kbdd)
+    testFixturesImplementation(TestingLibs.faker)
 }
 
 tasks.withType<Test> {

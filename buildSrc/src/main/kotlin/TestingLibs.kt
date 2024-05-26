@@ -1,0 +1,40 @@
+object TestingLibs {
+    private object Versions {
+        const val junit = "5.7.1"
+        const val kotest = "5.9.0"
+        const val kotest_arrow = "1.4.0"
+        const val arch_unit = "1.3.0"
+        const val faker = "2.2.2"
+        const val testcontainers = "1.19.8"
+        const val pact = "4.3.2"
+        const val wiremock = "2.31.0"
+        const val koin = "3.5.0"
+        const val rest_assured = "5.4.0"
+        const val spring_rabbit_test = "2.4.0"
+        const val mockk = "1.13.11"
+        const val mockk_spring = "4.0.2"
+        const val kotest_spring = "1.1.3"
+        const val kotest_pitest = "1.2.0"
+    }
+
+    const val kotest_junit = "io.kotest:kotest-runner-junit5-jvm:${Versions.kotest}"
+    const val kotest_assert = "io.kotest:kotest-assertions-core-jvm:${Versions.kotest}"
+    const val kotest_spring = "io.kotest.extensions:kotest-extensions-spring:${Versions.kotest_spring}"
+    const val kotest_arrow = "io.kotest.extensions:kotest-assertions-arrow:${Versions.kotest_arrow}"
+    const val kotest_pitest = "io.kotest.extensions:kotest-extensions-pitest:${Versions.kotest_pitest}"
+
+    const val spring_boot_starter_test = "org.springframework.boot:spring-boot-starter-test"
+    const val arch_unit = "com.tngtech.archunit:archunit:${Versions.arch_unit}"
+    const val mockk_spring = "com.ninja-squad:springmockk:${Versions.mockk_spring}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+
+    const val faker = "net.datafaker:datafaker:${Versions.faker}"
+    const val testcontainers_postgres = "org.testcontainers:postgresql:${Versions.testcontainers}"
+    const val testcontainers_rabbit = "org.testcontainers:rabbitmq:${Versions.testcontainers}"
+    const val testcontainers_core = "org.testcontainers:testcontainers:${Versions.testcontainers}"
+    const val testcontainers_spring = "org.springframework.boot:spring-boot-testcontainers"
+    const val wiremock = "com.github.tomakehurst:wiremock-jre8:${Versions.wiremock}"
+    const val rest_assured = "io.rest-assured:rest-assured:${Versions.rest_assured}"
+    const val rest_assured_kotlin = "io.rest-assured:kotlin-extensions:${Versions.rest_assured}"
+    const val spring_rabbit_test = "org.springframework.amqp:spring-rabbit-test:${Versions.spring_rabbit_test}"
+}

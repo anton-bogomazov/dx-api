@@ -7,11 +7,11 @@ dependencies {
     implementation(project(":user-api:domain"))
     implementation(project(":user-api:usecase"))
 
-    runtimeOnly(Libs.postgres_driver)
-    runtimeOnly(Libs.flyway)
-    implementation(Libs.spring_data_jdbc)
+    runtimeOnly(PersistenceLibs.postgres_driver)
+    runtimeOnly(PersistenceLibs.flyway)
+    implementation(PersistenceLibs.spring_data_jdbc)
 
     testImplementation(testFixtures(project(":user-api:domain")))
-    testImplementation(Libs.testcontainers_spring)
-    testImplementation(Libs.testcontainers_postgres)
+    testImplementation(TestingLibs.testcontainers_spring)
+    testImplementation(TestingLibs.testcontainers_postgres)
 }

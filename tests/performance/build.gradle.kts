@@ -1,15 +1,14 @@
 plugins {
-    id(Plugins.kotlin)
+    id(Conventions.kotlin_module)
     id(Plugins.gatling) version Plugins.Versions.gatling
 }
 
-// GATLING
 dependencies {
     gatlingImplementation(project(":tests:common"))
-    gatlingImplementation(Libs.rest_assured)
-    gatlingImplementation(Libs.rest_assured_kotlin)
-    gatlingImplementation(Libs.faker)
-    gatlingImplementation(Libs.testcontainers_core)
+    gatlingImplementation(TestingLibs.rest_assured)
+    gatlingImplementation(TestingLibs.rest_assured_kotlin)
+    gatlingImplementation(TestingLibs.faker)
+    gatlingImplementation(TestingLibs.testcontainers_core)
 }
 
 gatling {
