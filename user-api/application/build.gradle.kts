@@ -10,4 +10,7 @@ dependencies {
     implementation(project(":user-api:rest"))
 
     testImplementation(Libs.arch_unit)
+    testImplementation(testFixtures(project(":user-api:domain")))
+
+    testFixturesImplementation(testFixtures(project(":user-api:usecase")))
 }

@@ -1,19 +1,24 @@
+TODO:
+- application test (fitness, component, etc?)
+- add messaging (rabbit)
+
 APP:
-// add messaging
 // add few more services
 // version/removed flag
 
 TEST:
-// todo get users performance and other tests
+// get users performance test
+// create and get users performance e2e test
 // add pact contract testing
-// groom unit tests
 
 TECH:
 // scripts for different types of tests
 // configure linter properly
+// https://martinfowler.com/articles/richardsonMaturityModel.html
 
 OBSERVABILITY:
 // ELK
+// Business metrics on grafana board
 
 SEC:
 // todo add security
