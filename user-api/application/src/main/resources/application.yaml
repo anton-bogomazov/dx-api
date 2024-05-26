@@ -2,6 +2,10 @@ server:
   port: ${USER_API_PORT}
 
 spring:
+  application:
+    name: user-api
+
+# PERSISTENCE: Data migration and datasource config
   flyway:
     enabled: true
   datasource:
@@ -10,6 +14,7 @@ spring:
     password: ${POSTGRES_PASS}
     driver-class-name: org.postgresql.Driver
 
+# OBSERVABILITY: Spring boot admin server, logging pattern and actuator endpoints
   boot:
     admin:
       client:

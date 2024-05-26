@@ -91,9 +91,18 @@ services:
       - ./datasources.yaml:/etc/grafana/provisioning/datasources/all.yaml
       - ./spring-boot-dashboard.json:/var/lib/grafana/dashboards/spring-boot-dashboard.json
 
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - 3100:3100
+    command: -config.file=/etc/loki/local-config.yaml
+
 volumes:
   portainer_data:
   postgres:
   pgadmin:
   prometheus:
   grafana:
+
+networks:
+  loki:

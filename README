@@ -1,23 +1,24 @@
-TODO:
-- application test (fitness, component, etc?)
-- add messaging (rabbit)
-
 APP:
 // add few more services
 // version/removed flag
+- add messaging (rabbit)
 
 TEST:
 // get users performance test
 // create and get users performance e2e test
-// add pact contract testing
+- add pact contract testing
 
 TECH:
 // scripts for different types of tests
 // configure linter properly
 // https://martinfowler.com/articles/richardsonMaturityModel.html
+// groom docker-compose
+// groom gradle configs
+// log build/run times
+// add loki dashboard json | line extractor
+// add test logstash config (trying to push to loki in tests)
 
 OBSERVABILITY:
-// ELK
 // Business metrics on grafana board
 
 SEC:
