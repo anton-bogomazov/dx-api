@@ -14,3 +14,13 @@ dependencies {
 
     testFixturesImplementation(testFixtures(project(":user-api:usecase")))
 }
+
+jib {
+    container {
+        ports = listOf("8080")
+        mainClass = "com.abogomazov.userapi.UserApiApplicationKt"
+    }
+    to {
+        image = "abogomazov/user-api"
+    }
+}
