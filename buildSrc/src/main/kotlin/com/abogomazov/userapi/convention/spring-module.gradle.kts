@@ -10,6 +10,7 @@ apply {
 
 dependencies {
     implementation(platform(CoreLibs.spring_dependencies))
+    implementation(CoreLibs.spring_boot_starter)
     implementation(ObservabilityLibs.spring_boot_starter_logging)
 
     testImplementation(TestingLibs.spring_boot_starter_test)

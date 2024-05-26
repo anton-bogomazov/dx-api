@@ -11,6 +11,7 @@ class ArchTest : StringSpec({
     val classes =
         ClassFileImporter()
             .withImportOption(DoNotIncludeTests())
+            .withImportOption(DoNotImportMetrics)
             .importPackages("com.abogomazov.userapi.user")
 
     "application follows onion arch rules" {

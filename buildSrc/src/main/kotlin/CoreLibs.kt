@@ -8,5 +8,6 @@ object CoreLibs {
     const val arrow = "io.arrow-kt:arrow-core:${Versions.arrow}"
     const val koin = "io.insert-koin:koin-core:${Versions.koin}"
     const val spring_dependencies = "org.springframework.boot:spring-boot-dependencies:${Versions.spring_boot}"
+    const val spring_boot_starter = "org.springframework.boot:spring-boot-starter"
 }
 

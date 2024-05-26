@@ -6,7 +6,7 @@ plugins {
 
 dependencies {
     implementation(ObservabilityLibs.actuator)
-    implementation(ObservabilityLibs.actuator_prometheus)
+    implementation(ObservabilityLibs.micrometer_prometheus)
     implementation(ObservabilityLibs.spring_admin_client)
     implementation(ObservabilityLibs.sleuth)
     implementation(ObservabilityLibs.loki_appender)
