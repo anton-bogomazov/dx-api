@@ -1,11 +1,11 @@
 plugins {
-    com.abogomazov.userapi.convention.`spring-application`
+    id(Conventions.spring_app)
 }
 
 dependencies {
-    implementation("de.codecentric:spring-boot-admin-starter-server:3.2.3")
-    implementation(Libs.spring_boot_starter_logging)
-    implementation(Libs.slf4j_api)
+    implementation(ObservabilityLibs.spring_admin_server)
+    implementation(ObservabilityLibs.spring_boot_starter_logging)
+    implementation(ObservabilityLibs.slf4j_api)
 }
 
 jib {

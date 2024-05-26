@@ -16,6 +16,8 @@ TECH:
 // groom gradle configs
 // log build/run times
 // add loki dashboard json | line extractor
+// docker image versioning
+// proper logback config
 
 OBSERVABILITY:
 // Business metrics on grafana board

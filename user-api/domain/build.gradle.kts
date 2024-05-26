@@ -1,5 +1,5 @@
 plugins {
-    com.abogomazov.userapi.convention.`kotlin-jvm`
+    id(Conventions.kotlin_module)
 }
 
 dependencies {

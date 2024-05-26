@@ -30,7 +30,7 @@ repositories {
 dependencies {
     implementation(Libs.arrow)
 
-    implementation(Libs.slf4j_api)
+    implementation(ObservabilityLibs.slf4j_api)
 
     testImplementation(Libs.kotest_junit)
     testImplementation(Libs.kotest_assert)

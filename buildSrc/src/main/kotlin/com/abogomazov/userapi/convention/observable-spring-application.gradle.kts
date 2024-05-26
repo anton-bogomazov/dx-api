@@ -5,9 +5,9 @@ plugins {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("io.micrometer:micrometer-registry-prometheus")
-    implementation("de.codecentric:spring-boot-admin-starter-client:3.2.3")
-    implementation("org.springframework.cloud:spring-cloud-starter-sleuth:3.1.11")
-    implementation("com.github.loki4j:loki-logback-appender:1.5.1")
+    implementation(ObservabilityLibs.actuator)
+    implementation(ObservabilityLibs.actuator_prometheus)
+    implementation(ObservabilityLibs.spring_admin_client)
+    implementation(ObservabilityLibs.sleuth)
+    implementation(ObservabilityLibs.loki_appender)
 }

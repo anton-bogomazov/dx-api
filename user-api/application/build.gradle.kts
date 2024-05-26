@@ -1,5 +1,5 @@
 plugins {
-    com.abogomazov.userapi.convention.`observable-spring-application`
+    id(Conventions.observable_spring_app)
 }
 
 dependencies {

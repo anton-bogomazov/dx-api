@@ -1,5 +1,5 @@
 plugins {
-    com.abogomazov.userapi.convention.`spring-module`
+    id(Conventions.spring_module)
 }
 
 dependencies {
