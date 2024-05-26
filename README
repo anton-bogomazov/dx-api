@@ -12,10 +12,7 @@ TECH:
 // scripts for different types of tests
 // configure linter properly
 // https://martinfowler.com/articles/richardsonMaturityModel.html
-// groom docker-compose + why "-1" postfix in cont names?
 // add loki dashboard json | line extractor
-// docker image versioning
-// proper logback config
 // org.webjars:hal-explorer? resilience4j_circuitbreaker? resilience4j_bulkhead?
 
 OBSERVABILITY:

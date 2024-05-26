@@ -17,12 +17,14 @@ dependencies {
     testFixturesImplementation(TestingLibs.arch_unit)
 }
 
+version = "0.0.1"
+
 jib {
     container {
         ports = listOf("8080")
         mainClass = "com.abogomazov.userapi.UserApiApplicationKt"
     }
     to {
-        image = "abogomazov/user-api"
+        image = "abogomazov/user-api:$version"
     }
 }
